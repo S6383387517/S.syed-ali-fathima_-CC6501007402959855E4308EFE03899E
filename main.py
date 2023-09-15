@@ -1,36 +1,25 @@
-# Python 3 program to find factorial
-# of a given number using prime
-# factorization method.
- 
-# Function to find prime factors of a number
-def primeFactors(n):
-    factors = {}
-    i = 2
-    while i*i <= n:
-        while n % i == 0:
-            if i not in factors:
-                factors[i] = 0
-            factors[i] += 1
-            n //= i
-        i += 1
-    if n > 1:
-        if n not in factors:
-            factors[n] = 0
-        factors[n] += 1
-    return factors
- 
-# Function to find factorial of a number
-def factorial(n):
-    result = 1
-    for i in range(2, n+1):
-        factors = primeFactors(i)
-        for p in factors:
-            result *= p ** factors[p]
-    return result
- 
-# Driver Code
-num = 5
-print("Factorial of", num, "is", factorial(num))
+# 1.1 1mplement a recursive function to calculate the  factorial of given number
+
+"""
+1! = 1 * 1
+2! = 2 * 1! --->2 * 1
+3! = 3 * 2! --->3 * 2 * 1
+.
+.
+10! = 10 * 9! --> 10 * 9 * 8 *... * 1
+
+Formula - n * (n-1)!
+"""
 
 
+def fact_rec(n):
+  if n==0 or n==1:
+    return 1
+  else:
+    return n*fact_rec(n-1)
 
+number =  int(input("Enter a value :"))
+res = fact_rec(number)
+
+print("The factorial of {} is {}.".format(number,res))
+  
